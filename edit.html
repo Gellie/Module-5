@@ -7,10 +7,7 @@
     </head>
     <body>
         <div class='main'>
-            <h1>PUP Thesis Library</h1>
-            <div class='form-section'>
-                <!-- your form here -->
-                <h1 class='form-title'>Edit Thesis Info</h1>
+                <h2 class='form-title'>Edit Thesis Info</h2>
                 <form class='create-form' action = '/edit/{{thesis.key.id()}}' method = 'post'>
                     Year: <select name = 'Year'>
                         <option value = "2011">2011</option>
@@ -20,8 +17,11 @@
                         <option value = "2015">2015</option>
                         <option selected = "{{thesis.Year}}">{{thesis.Year}}</option>
                     </select><br>
+                    <br><label>Title:</label><br>
                     <br><input type='text' name = 'Title' value = '{{thesis.Title}}'/> <br>
-                    <br>Abstract: <textarea name = 'Abstract' rows = "8" cols = "30">{{thesis.Abstract}}</textarea><br>
+                    <br><label>Abstract:</label><br>
+                    <textarea name = 'Abstract' rows = "10" cols = "80">{{thesis.Abstract}}</textarea><br>
+                    <br><label>Adviser:</label><br>
                     <br><input type='text' name = 'Adviser' value = '{{thesis.Adviser}}'> <br>
                     <br>Section: <select name = 'Section' value = '{{thesis.Section}}'>
                         <option value = "1">1</option>
@@ -37,7 +37,5 @@
             </div>
         </div>
 
-
-        
     </body>
 </html>
