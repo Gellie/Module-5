@@ -21,11 +21,10 @@ class Thesis(ndb.Model):
 	Abstract = ndb.StringProperty(indexed=True)
 	Adviser = ndb.StringProperty(indexed=True)
 	Section = ndb.StringProperty(indexed=True)
-	Thesis.created_by = ndb.StringProperty(indexed=True)
+	created_by = ndb.StringProperty(indexed=True)
 	date = ndb.DateTimeProperty(auto_now_add=True)
 
 class User(ndb.Model):
-  email = ndb.StringProperty(indexed=True)
 	first_name = ndb.StringProperty(indexed=True)
 	last_name = ndb.StringProperty(indexed=True)
 	phone_number = ndb.StringProperty(indexed=True)
@@ -74,7 +73,7 @@ class APIThesis(webapp2.RequestHandler):
 				'Abstract': entry.Abstract,
 				'Adviser': entry.Adviser,
 				'Section': entry.Section,
-				'Thesis.created_by': entry.Thesis.created_by
+				'created_by': entry.created_by
 			})
 
 		response = {
@@ -94,7 +93,7 @@ class APIThesis(webapp2.RequestHandler):
 		thesis.Abstract = self.request.get('Abstract')
 		thesis.Adviser = self.request.get('Adviser')
 		thesis.Section = self.request.get('Section')
-		thesis.Thesis.created_by = user_logged_in.email()
+		thesis.created_by = user_logged_in.email()
 		thesis.put()
 
 		self.response.headers['Content-Type'] = 'application/json'
@@ -107,7 +106,7 @@ class APIThesis(webapp2.RequestHandler):
 		            'Abstract': thesis.Abstract,
 		            'Adviser': thesis.Adviser,
 		            'Section': thesis.Section,
-		            'Thesis.created_by': thesis.Thesis.created_by,
+		            'created_by': thesis.created_by,
 		        }
 		}
 		self.response.out.write(json.dumps(response))
@@ -201,17 +200,16 @@ class editThesis(webapp2.RequestHandler):
 		thesis.Abstract = self.request.get('Abstract')
 		thesis.Adviser = self.request.get('Adviser')
 		thesis.Section = self.request.get('Section')
-		thesis.Thesis.created_by = user_logged_in.email()
+		thesis.created_by = user_logged_in.email()
 		thesis.put()
 		self.redirect('/')
 
 app = webapp2.WSGIApplication([
     ('/home', MainPageHandler),
-    ('/login', loginPage),
+    ('/', MainPageHandler),
     ('/edit/(.*)', editThesis)
     ('/delete/(.*)', deleteThesis),
     ('/api/thesis', APIThesis),
-    ('/api/thesis', APIThesis),
+    ('/login', loginPage),
     ('/api/user', registerPage),
-    ('/', MainPageHandler),
 ], debug=True)
