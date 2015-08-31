@@ -12,7 +12,7 @@
             <p><a href = "{{url|safe}}"><button type=\"submit\">{{url_linktext}}</button></a></p>
             <div class='form-section'>
                 <!-- your form here -->
-                <h1 class='form-title'>New Thesis Entry</h1>
+                <h1 class='form-title'>Add Thesis</h1>
                 <form class='create-form'>
                     Year: <select name = 'Year'>
                         <option value = "2011">2011</option>
@@ -21,8 +21,11 @@
                         <option value = "2014">2014</option>
                         <option value = "2015">2015</option>
                     </select><br>
+                    <br><label>Title:</label><br>
                     <br><input type='text' name = 'Title' placeholder='Thesis Title'/> <br>
-                    <br>Abstract: <textarea name = 'Abstract' rows = "10" cols = "30"></textarea><br>
+                    <br><label>Abstract:</label><br>
+                    <br><textarea name = 'Abstract' rows = "10" cols = "80"></textarea><br>
+                    <br><label>Adviser:</label><br>
                     <br><input type='text' name = 'Adviser' placeholder='Thesis Adviser'> <br>
                     <br>Section: <select name = 'Section'>
                         <option value = "1">1</option>
@@ -31,18 +34,16 @@
                         <option value = "4">4</option>
                         <option value = "5">5</option>
                     </select><br>
-                    <input type='submit' value='Submit Thesis'></input><br>
+                    <input type='submit' value='Submit'></input><br>
                 </form>
             </div>
             <div class='list-section'>
-                <!-- your list here -->
                 <h1>Thesis List</h1>
                 <ul class='thesis-list'>
 
                 </ul>
             </div>
         </div>
-
 
         <script type="text/javascript" src='/static/script.js'></script>
     </body>
