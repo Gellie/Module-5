@@ -1,0 +1,27 @@
+body {
+}
+
+h1 {
+    color: #6A5ACD;
+    text-align: center; 
+}
+
+h1 {
+    border: 5px solid #800000;
+}
+
+.main {
+    width: 600px;
+    margin: auto;
+}
+
+form input[type=text] {
+    width: 100%;
+    margin-top: 5px;
+    line-height: 20px;
+}
+form input[type=submit] {
+    margin-top: 5px;
+    position: relative;
+    float: left;
+}
